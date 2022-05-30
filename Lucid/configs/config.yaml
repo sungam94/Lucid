@@ -1,0 +1,97 @@
+batch_name: "mandala2"
+prompts: ["psychedelic mandala"]
+image_prompts: []
+
+steps: 150
+batch_size: 1
+n_batches: 1
+
+width_height: [800, 800]
+side_x: null
+side_y: null
+
+cutn: 1
+cutn_batches: 1 
+clip_guidance_scale: 500  # Controls how much the image should look like the prompt.
+tv_scale: 200  # Controls the smoothness of the final output.
+range_scale: 50  # Controls how far out of range RGB values are allowed to be.
+
+
+cut_overview: "[12]*400+[4]*600" 
+cut_innercut: "[4]*400+[12]*600"
+cut_ic_pow: 1
+cut_icgray_p: "[0.2]*400+[0]*600"
+cutout_debug: False
+skip_augs: False
+
+animation_mode: "None"
+
+perlin_mode: False
+seed: "random_seed"
+
+env:
+  root_path: "/home/mag/Lucid"
+  OUTPUT_DIR: "output"
+  IMG_EXT: ".png"
+
+
+init_image: null  # This can be an URL or Colab local path and must be in quotes.
+skip_timesteps: 0  # This needs to be between approx. 200 and 500 when using an init image.
+# Higher values make the output look more like the init.
+init_scale: 0  # This enhances the effect of the init image, a good value is 1000.
+
+
+model_config: null
+models:
+  model: "512x512_diffusion_uncond_finetune_008100"
+  clip_model: "ViT-B/16"
+  diffusion_model: null
+  lpips_model: null
+
+  ViTB32: False 
+  ViTB16: False 
+  ViTL14: False  # Default False
+  RN101: False  # Default False
+  RN50: False  # Default True
+  RN50x4: False  # Default False
+  RN50x16: False 
+  RN50x64: False 
+  SLIPB16: False  # Default False. Looks broken, likely related to commented import of SLIP_VITB16
+  SLIPL16: False
+
+
+model_settings:
+  512x512_diffusion_uncond_finetune_008100:
+    attention_resolutions: '32, 16, 8'
+    class_cond: False
+    diffusion_steps: 1000 #No need to edit this, it is taken care of later.
+    rescale_timesteps: True
+    timestep_respacing: '250' #No need to edit this, it is taken care of later.
+    image_size: 512
+    learn_sigma: True
+    noise_schedule: 'linear'
+    num_channels: 256
+    num_head_channels: 64
+    num_res_blocks: 2
+    resblock_updown: True
+    use_checkpoint: False
+    use_fp16: True
+    use_scale_shift_norm: True
+
+  256x256_diffusion_uncond:
+    attention_resolutions: '32, 16, 8'
+    class_cond: False
+    diffusion_steps: 1000 #No need to edit this, it is taken care of later.
+    rescale_timesteps: True
+    timestep_respacing: '250' #No need to edit this, it is taken care of later.
+    image_size: 256
+    learn_sigma: True
+    noise_schedule: 'linear'
+    num_channels: 256
+    num_head_channels: 64
+    num_res_blocks: 2
+    resblock_updown: True
+    use_checkpoint: False
+    use_fp16: True
+
+n_batch: null

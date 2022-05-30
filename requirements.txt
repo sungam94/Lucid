@@ -1,0 +1,15 @@
+hydra
+hydra-core
+
+pytorch
+torchvision
+torchaudio
+cudatoolkit 11.3
+
+omegaconf
+tqdm
+
+ftfy
+lpips
+
+regex
